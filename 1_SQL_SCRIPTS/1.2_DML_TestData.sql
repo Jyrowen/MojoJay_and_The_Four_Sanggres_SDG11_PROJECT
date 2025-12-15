@@ -1,3 +1,6 @@
+-- ========================= HAZARD TYPE DATA =========================
+-- Inserts predefined hazard types used in the system
+-- Each hazard is classified based on international disaster categories
 INSERT INTO HAZARD_TYPE (Hazard_Type_ID, Name, Category) VALUES
 (1001,'Typhoon','Hydrometeorological'),
 (1002,'Flood','Hydrometeorological'),
@@ -6,6 +9,9 @@ INSERT INTO HAZARD_TYPE (Hazard_Type_ID, Name, Category) VALUES
 (1005,'Volcanic Eruption','Geological'),
 (1006,'Forest Fire','Meteorological');
 
+-- ========================= REGION DATA =========================
+-- Stores Philippine regions with their poverty rates
+-- Poverty_Rate is used for socio-economic risk and vulnerability analysis
 INSERT INTO REGION (Region_ID, Region_Name, Poverty_Rate) VALUES
 (2001,'NCR',1.1),
 (2002,'CAR',7.0),
@@ -25,6 +31,9 @@ INSERT INTO REGION (Region_ID, Region_Name, Poverty_Rate) VALUES
 (2016,'Region XIII',24.1),
 (2017,'BARMM',29.5);
 
+-- ========================= MUNICIPALITY DATA =========================
+-- Inserts municipalities and links them to their respective regions
+-- Demonstrates one-to-many relationship between Region and Municipality
 INSERT INTO MUNICIPALITY (Municipality_ID, Region_ID, Municipality_Name) VALUES
 (3001,2001,'Manila'),
 (3002,2001,'Quezon City'),
@@ -77,6 +86,9 @@ INSERT INTO MUNICIPALITY (Municipality_ID, Region_ID, Municipality_Name) VALUES
 (3049,2015,'Koronadal'),
 (3050,2016,'Bislig');
 
+-- ========================= BARANGAY DATA =========================
+-- Inserts barangays under each municipality
+-- This enables detailed, localized disaster impact tracking
 INSERT INTO BARANGAY (Barangay_ID, Municipality_ID, Barangay_Name) VALUES
 (4001,3001,'Tondo District'),
 (4002,3002,'Bago Bantay'),
@@ -129,6 +141,9 @@ INSERT INTO BARANGAY (Barangay_ID, Municipality_ID, Barangay_Name) VALUES
 (4049,3049,'Poblacion'),
 (4050,3050,'Poblacion');
 
+-- ========================= DISASTER EVENT DATA =========================
+-- Records actual disaster incidents per barangay
+-- Includes duration, severity, and short narrative description
 INSERT INTO DISASTER_EVENT (Event_ID, Hazard_Type_ID, Barangay_ID, Start_Date, End_Date, Severity_Scale, Description) VALUES
 (5001,1001,4001,'2021-12-16','2021-12-21',9,'Typhoon Rai (Odette) hit Tondo District'),
 (5002,1001,4002,'2023-08-22','2023-09-03',8,'Typhoon Saola (Goring) passed near Bago Bantay, heavy rain & wind'),
@@ -181,6 +196,9 @@ INSERT INTO DISASTER_EVENT (Event_ID, Hazard_Type_ID, Barangay_ID, Start_Date, E
 (5049,1006,4049,'2023-02-18','2023-02-19',5,'Forest fire in Poblacion'),
 (5050,1003,4050,'2023-01-12','2023-01-13',7,'Earthquake impacted Poblacion');
 
+-- ========================= POPULATION SEGMENT DATA =========================
+-- Groups residents by vulnerability type per barangay
+-- Used to assess evacuation status and disaster preparedness
 INSERT INTO POPULATION_SEGMENT (Segment_ID, Barangay_ID, Description, Total_Count, Vulnerability_Index, Evacuation_Status) VALUES
 (6001,4001,'Elderly residents of Tondo District',1200,5,'Evacuated'),
 (6002,4002,'Low-income families in Bago Bantay',900,4,'Evacuated'),
@@ -233,6 +251,9 @@ INSERT INTO POPULATION_SEGMENT (Segment_ID, Barangay_ID, Description, Total_Coun
 (6049,4049,'Low-income households in Poblacion',800,4,'Evacuated'),
 (6050,4050,'Senior citizens in Poblacion',350,5,'Evacuated');
 
+-- ========================= HUMAN IMPACT DATA =========================
+-- Records the human consequences of each disaster event
+-- Links disaster events with specific population segments
 INSERT INTO HUMAN_IMPACT (Human_Impact_ID, Event_ID, Segment_ID, Deaths_Count, Injuries_Count, People_Affected_Count) VALUES
 (7001,5001,6001,12,30,200),
 (7002,5002,6002,8,20,150),
@@ -285,6 +306,9 @@ INSERT INTO HUMAN_IMPACT (Human_Impact_ID, Event_ID, Segment_ID, Deaths_Count, I
 (7049,5049,6049,3,5,25),
 (7050,5050,6050,0,1,10);
 
+-- ========================= ASSET DATA =========================
+-- Stores physical assets located in barangays
+-- Pre_Disaster_Value is used to calculate economic damage
 INSERT INTO ASSET (Asset_ID, Barangay_ID, Asset_Type, Pre_Disaster_Value, Coordinates) VALUES
 (8001,4001,'Hospital',50000000,'14.6000,120.9800'),
 (8002,4002,'School',2000000,'14.6500,121.0500'),
@@ -337,6 +361,9 @@ INSERT INTO ASSET (Asset_ID, Barangay_ID, Asset_Type, Pre_Disaster_Value, Coordi
 (8049,4049,'House',400000,'6.9000,123.1100'),
 (8050,4050,'Hospital',50000000,'6.9100,123.1200');
 
+-- ========================= IMPACTED ASSET DATA =========================
+-- Connects disaster events to damaged assets
+-- Damage_Level and Estimated_Loss_Value quantify infrastructure impact
 INSERT INTO IMPACTED_ASSET (Impact_Asset_ID, Event_ID, Asset_ID, Damage_Level, Estimated_Loss_Value) VALUES
 (9001,5001,8001,'Severe',30000000),
 (9002,5002,8002,'Moderate',1200000),
@@ -387,4 +414,5 @@ INSERT INTO IMPACTED_ASSET (Impact_Asset_ID, Event_ID, Asset_ID, Damage_Level, E
 (9047,5047,8047,'Moderate',400000),
 (9048,5048,8048,'Minor',100000),
 (9049,5049,8049,'Moderate',300000),
+
 (9050,5050,8050,'Severe',25000000);
