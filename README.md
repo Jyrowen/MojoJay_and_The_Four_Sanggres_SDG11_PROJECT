@@ -137,8 +137,8 @@ Once the database and CLI interface are set up:
 
 This project was developed collaboratively as part of the **DBMS for Sustainable Development** final requirement.
 
-- **Jay-Roween Bumatay** – Core DBMS concepts, functional and non-functional requirements, stored procedures, transaction flowchart, GitHub management
-- **Ayessa Apple Galpo** – Project overview, UN SDG alignment, data requirements, ER diagrams, presentation materials
-- **Trishia May Lacasa** – ER diagrams, transaction flowchart, system testing and results
-- **Kate Ashley Quizon** – Problem statement, schema normalization analysis, DBMS concepts, SQL database implementation
-- **Rica Mae Yaranon** – Problem statement, data requirements, project conclusion, presentation materials
+- **Jay-Roween Bumatay** – Core DBMS concepts, functional and non-functional requirements, stored procedures, transaction flowchart, and GitHub management
+- **Ayessa Apple Galpo** – Project overview, UN SDG alignment, data requirements, ER diagrams, and presentation materials
+- **Trishia May Lacasa** – Project overview, UN SDG alignment, ER diagrams, transaction flowchart, system testing, and results
+- **Kate Ashley Quizon** – Problem statement, schema normalization analysis, DBMS concepts, SQL database implementation, system testing, and results
+- **Rica Mae Yaranon** – Problem statement, data requirements, project conclusion, and presentation materials
